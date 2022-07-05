@@ -1,7 +1,6 @@
 /// <reference types="styled-jsx" />
 
 import { useEffect, useState } from "react";
-const API_KEY = "27b04d28b3c48267ca2d4119b0197e69";
 
 import Seo from "../components/Seo";
 
@@ -9,11 +8,7 @@ export default function Home() {
   const [movies, setMovies] = useState();
   useEffect(() => {
     (async () => {
-      const { results } = await (
-        await fetch(
-          `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`
-        )
-      ).json();
+      const { results } = await (await fetch(`/api/movies`)).json();
       setMovies(results);
     })();
   }, []);
