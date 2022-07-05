@@ -1,15 +1,16 @@
 /** @type {import('next').NextConfig} */
+const API_KEY = process.env.API_KEY;
 
 const nextConfig = {
   reactStrictMode: true,
-};
-
-const API_KEY = process.env.API_KEY;
-
-module.exports = {
-  nextConfig,
   async redirects() {
-    return [{ source: "/contact", destination: "/form", permanent: false }];
+    return [
+      {
+        source: "/contact",
+        destination: "/form",
+        permanent: false,
+      },
+    ];
   },
   async rewrites() {
     return [
@@ -20,3 +21,5 @@ module.exports = {
     ];
   },
 };
+
+module.exports = nextConfig;

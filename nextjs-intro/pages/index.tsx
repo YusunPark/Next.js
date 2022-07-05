@@ -1,23 +1,28 @@
 /// <reference types="styled-jsx" />
 
 import { useEffect, useState } from "react";
+import { InferGetServerSidePropsType } from "next";
 
 import Seo from "../components/Seo";
 
-export default function Home() {
-  const [movies, setMovies] = useState();
-  useEffect(() => {
-    (async () => {
-      const { results } = await (await fetch(`/api/movies`)).json();
-      setMovies(results);
-    })();
-  }, []);
+interface IMovieProps {
+  id: number;
+  backdrop_path: string;
+  original_title: string;
+  overview: string;
+  poster_path: string;
+  title: string;
+  vote_average: number;
+  genre_ids: [number];
+}
+
+export default function Home({
+  results,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <div className="container">
-      {" "}
       <Seo title="Home" />
-      {!movies && <h4>Loading...</h4>}
-      {movies?.map((movie: any) => (
+      {results?.map((movie: IMovieProps) => (
         <div className="movie" key={movie.id}>
           <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
           <h4>{movie.original_title}</h4>
@@ -47,3 +52,15 @@ export default function Home() {
     </div>
   );
 }
+
+export const getServerSideProps = async () => {
+  const { results } = await (
+    await fetch(`http://localhost:3000/api/movies`)
+  ).json();
+
+  return {
+    props: {
+      results,
+    },
+  };
+};
