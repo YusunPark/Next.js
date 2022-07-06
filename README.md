@@ -1,4 +1,6 @@
 # Next.js
-NextJS 시작하기
+NextJS 시작하기 (Complete)
 
-![image](https://user-images.githubusercontent.com/59571464/177075558-313129a6-47ed-4a4e-ad2a-690dbfa6a585.png)
+2022.07.03 ~ 2022.07.06
+
+![image](https://user-images.githubusercontent.com/59571464/177579740-fd823cd0-67f0-4bfa-a7e7-7c5e6e3cbc9e.png)
