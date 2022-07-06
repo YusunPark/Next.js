@@ -1,5 +1,5 @@
 # Next.js
-NextJS 시작하기
+NextJS 시작하기 (Complete)
 
 2022.07.03 ~ 2022.07.06
 
